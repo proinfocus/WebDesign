@@ -1,0 +1,302 @@
+/* Fonts */
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+/* Global Settings */
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    position: relative;
+    margin: 0;
+    height: 100%;
+    font-family: 'Roboto', sans-serif;
+}
+
+p {
+    margin: 0;
+    line-height: 1.5em;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0.6em 0;
+    color: #11494b;
+}
+
+.m1 {
+    margin: 1em;
+}
+
+.p1 {
+    padding: 1em;
+}
+
+.left {
+    text-align: left
+}
+
+.right {
+    text-align: right;
+}
+
+.center {
+    text-align: center;
+}
+
+/* Navigation Section */
+.menu {
+    position: absolute;
+    margin: 1em;
+    text-decoration: none;
+    display: none;
+}
+
+.menu i {
+    color: #fff;
+    font-size: 2em;
+}
+
+.nav {
+    text-align: center;
+    width: 100%;
+    height: 50px;
+    display: grid;
+    align-items: center;
+    background: #11494b;
+}
+
+.nav ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+.nav ul li {
+    display: inline;
+}
+
+.nav ul li a {
+    display: inline-block;
+    text-decoration: none;
+    color: #fff;
+    font-size: 0.8em;
+    padding: 1em;
+}
+
+.nav ul li a:hover {
+    background-color: #000;
+    color: #fff;
+}
+
+/* Hero Section */
+.hero {
+    position: relative;
+    height: 550px;
+}
+
+.hero .fas {
+    color: #fff;
+    position: absolute;
+    font-size: 3em;
+    display: block;
+    z-index: 100;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    text-shadow: 1px 1px 10px #000;
+}
+
+.hero .fa-chevron-left {
+    left: 10px;
+}
+
+.hero .fa-chevron-right {
+    right: 10px;
+}
+
+.hero img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: all 1s ease-in-out;
+}
+
+.hero img:nth-of-type(1) {
+    opacity: 1;
+}
+
+.hero img.show {
+    opacity: 1;
+}
+
+/* Content Section */
+.content {
+    max-width: 1200px;
+    padding: 1em;
+    margin: auto;
+    margin-top: 2em;
+    color: #888;
+}
+
+.content .cols {
+    margin: 1em 0;
+    display: grid;
+    grid-auto-flow: column;
+    grid-gap: 1em;
+}
+
+.content .col {
+    text-align: center;
+    background: #f1f5fa;
+    border: 1px solid #def;
+    border-radius: 5px;
+    background-image: linear-gradient(145deg, rgb(17, 73, 75, 0), rgb(16, 72, 74, 0.1));
+}
+
+.content .co {
+    text-align: left;
+}
+
+.content .col i {
+    font-size: 3em;
+    color: #999;
+}
+
+.content h1 {
+    color: #11494b;
+}
+
+.col-3 {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.col-4 {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+/* Footer Section */
+.footer {
+    margin-top: 2em;
+    background: #11494b url(http://unsplash.it/1366/500/?image=374) center center no-repeat;
+    background-size: cover;
+    background-blend-mode: multiply;
+    padding: 3em;
+}
+
+.footer ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.footer ul li {
+    line-height: 1.5em;
+}
+
+.footer .cols {
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: repeat(4, 25%);
+}
+
+.footer a {
+    color: #999;
+    text-decoration: none;
+    font-size: 0.75em;
+    line-height: 1.5em;
+}
+
+.footer a:hover {
+    color: lightgreen;
+}
+
+.footer p {
+    margin-top: 4em;
+    border-top: 1px solid forestgreen;
+    padding: 1em 0;
+    text-align: center;
+    font-size: 0.75em;
+    color: #999;
+}
+
+@media (max-width: 900px) {
+
+    .menu {
+        display: block;
+    }
+
+    .nav ul {
+        background-color: #11494b;
+        width: 100%;
+        margin-top: 51px;
+        z-index: 1000;
+        display: none;
+        transition: all 1s;
+    }
+
+    .nav ul li {
+        display: block;
+        width: 100%;
+        text-align: left;
+    }
+
+    .nav ul li a {
+        display: block;
+    }
+
+    .hero {
+        position: relative;
+        height: 450px;
+    }
+
+    .content .cols {
+        grid-auto-flow: row;
+    }
+
+    .col-4,
+    .col-3 {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .footer {
+        padding: 1em;
+    }
+
+    .footer .cols {
+        grid-auto-flow: row;
+        grid-template-columns: repeat(2, auto);
+    }
+
+    .footer .co {
+        margin-top: 2em;
+    }
+}
+
+@media (max-width: 600px) {
+
+    .hero {
+        position: relative;
+        height: 300px;
+    }
+
+    .content .cols {
+        grid-auto-flow: row;
+    }
+
+    .col-4,
+    .col-3 {
+        grid-template-columns: auto;
+    }
+
+    .footer .cols {
+        grid-template-columns: auto;
+    }
+
+}
