@@ -183,7 +183,7 @@ h6 {
 
 /* Gallery section */
 .content .card {
-    background-color:rgba(255, 255, 255, 1);
+    background-color: rgba(255, 255, 255, 1);
     background-image: none;
     padding: 0.5em;
     border: 1px solid #efefef;
@@ -197,6 +197,7 @@ h6 {
 .card h4 {
     color: #666;
 }
+
 .card p {
     font-size: 0.9em;
 }
@@ -204,9 +205,7 @@ h6 {
 /* Footer Section */
 .footer {
     margin-top: 2em;
-    background: #11494b url(http://unsplash.it/1366/500/?image=374) center center no-repeat;
     background-size: cover;
-    background-blend-mode: multiply;
     padding: 3em;
 }
 

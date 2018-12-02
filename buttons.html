@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Buttons</title>
+
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      html,
+      body,
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      button,
+      p {
+        margin: 0;
+        padding: 0;
+        font-family: "SF Pro Text", Roboto, "Montserrat", sans-serif;
+        color: #fff;
+      }
+      .container {
+        padding: 3em;
+        min-height: 500px;
+        display: grid;
+        justify-content: start;
+        align-content: flex-end;
+        background: url("http://unsplash.it/1280/500/?random") center center
+          no-repeat;
+        background-size: cover;
+      }
+
+      .button-container {
+        display: grid;
+        justify-content: start;
+        grid-auto-flow: column;
+        grid-gap: 0.5em;
+        grid-template-columns: auto;
+      }
+
+      .button {
+        padding: 0.5em 1.5em;
+        color: #666;
+        border: 1px solid #fff;
+        background-color: #fff;
+        border-radius: 0.3em;
+        cursor: pointer;
+        font-weight: bold;
+      }
+
+      .button:hover {
+        background-color: purple;
+        border: 1px solid purple;
+        color: #fff;
+      }
+
+      .cta {
+        background-color: dodgerblue;
+        border-color: dodgerblue;
+        color: #fff;
+      }
+
+      .section {
+        background-color: rgba(0, 0, 0, 0.75);
+        border-left: 10px solid purple;
+        padding: 2em;
+        max-width: 400px;
+      }
+
+      .animate {
+        opacity: 0;
+        transform: translateX(-2em) translateY(2em);
+        transition: all 2s ease-out;
+      }
+
+      .normal {
+        opacity: 1;
+        transform: translate(0);
+      }
+
+      .mute {
+        color: #999;
+      }
+
+      .mb1 {
+        margin-bottom: 1em;
+      }
+      .mb2 {
+        margin-bottom: 2em;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="section animate">
+        <h1>Surface Pro</h1>
+        <p class="mute mb2">
+          Imagine where they'll take their ideas with this thin, powerful device
+        </p>
+        <div class="button-container">
+          <button class="button cta" onclick="location.reload(true)">
+            Shop Now
+          </button>
+          <button class="button">Learn More</button>
+        </div>
+      </div>
+    </div>
+    <script>
+      (function() {
+        var ele = document.querySelectorAll(".animate");
+        setInterval(() => {
+          ele.forEach(e => e.classList.add("normal"));
+        }, 1);
+      })();
+    </script>
+  </body>
+</html>
