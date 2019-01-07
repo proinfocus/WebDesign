@@ -28,9 +28,15 @@
             font-weight: bold;
         }
 
+        select,
+        option {
+            font-size: 1em;
+            font-weight: bold;
+        }
+
         textarea {
             width: 100%;
-            height: 100%;
+            height: 40vh;
             overflow: auto;
             font-family: 'Courier New', Courier, monospace;
             font-size: 12pt;
@@ -76,46 +82,82 @@
         <div class="content-top">
             <div class="content-left">
                 <p>Input to generator code</p>
-                <textarea id="codeInput" cols="30" rows="10"></textarea>
+                <textarea id="codeInput"></textarea>
             </div>
             <div class="content-right">
                 <p>Template to generator code for</p>
-                <textarea id="codeTemplate" cols="30" rows="10"></textarea>
+                <textarea id="codeTemplate"></textarea>
             </div>
         </div>
-        <button id="generateButton">Generate</button>
+        <div class="content-top">
+            <div class="content-left">
+                Choose Template: <select id="selectTemplate">
+                    <option value=''>(Choose Template)</option>
+                </select>
+            </div>
+            <div class="content-right">
+                <button id="generateButton">Generate Code</button>
+            </div>
+        </div>
         <div class="content-bottom">
             <p>Output generated</p>
-            <textarea id="codeGenerated" cols="30" rows="10"></textarea>
+            <textarea id="codeGenerated"></textarea>
         </div>
     </div>
 
     <script>
         const generateButton = document.getElementById("generateButton");
+        const selectTemplate = document.getElementById("selectTemplate");
+        const template = document.getElementById("codeTemplate");
+
+
+        selectTemplate.addEventListener("change", (e) => {
+            var file = e.target.value;
+            if (file.length !== 0)
+                loadFile(file);
+        });
 
         generateButton.addEventListener("click", () => {
-            var input = document.getElementById("codeInput").value;
-            var template = document.getElementById("codeTemplate").value;
+            var input = document.getElementById("codeInput").value.trim();
             var output = document.getElementById("codeGenerated");
-
             var result = "";
             input.split("\n").forEach(line => {
-                result += processTemplate(line, template) + "\n\n";
+                result += processTemplate(line, template.value) + "\n\n";
             });
             output.value = result;
         });
 
         function processTemplate(input, template) {
             var i = 1;
+            var temp = template.split("--end")[0];
             input.split(',').forEach(w => {
                 if (w.trim() === "")
                     return;
 
-                template = template.split("$" + i).join(w.trim());
+                temp = temp.split("$" + i).join(w.trim());
                 i++;
             });
-            return template;
+            return temp;
         }
+
+        function loadFile(file) {
+            fetch(file).then(r => r.text().then(t => template.value = t));
+        }
+
+        function loadTemplates(f) {
+            fetch("templates.txt").then(r => r.text().then(t => {
+                var data = t;
+                data.split("\n").forEach(line => {
+                    var opt = line.split("=");
+                    var child = document.createElement("option");
+                    child.value = opt[1];
+                    child.text = opt[0];
+                    selectTemplate.appendChild(child);
+                });
+            }));
+        }
+
+        loadTemplates();
     </script>
 </body>
 
